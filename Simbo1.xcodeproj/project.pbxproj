@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7117F43D1931DE0B0045C650 /* PhotoBowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7117F4381931DE0B0045C650 /* PhotoBowserViewController.m */; };
-		7117F43E1931DE0B0045C650 /* PhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7117F43A1931DE0B0045C650 /* PhotoModel.m */; };
-		7117F43F1931DE0B0045C650 /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7117F43C1931DE0B0045C650 /* PhotoView.m */; };
 		7119C5681920FBC700A66427 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7119C5671920FBC700A66427 /* Foundation.framework */; };
 		7119C56A1920FBC700A66427 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7119C5691920FBC700A66427 /* CoreGraphics.framework */; };
 		7119C56C1920FBC700A66427 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7119C56B1920FBC700A66427 /* UIKit.framework */; };
@@ -275,10 +273,6 @@
 /* Begin PBXFileReference section */
 		7117F4371931DE0B0045C650 /* PhotoBowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBowserViewController.h; sourceTree = "<group>"; };
 		7117F4381931DE0B0045C650 /* PhotoBowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBowserViewController.m; sourceTree = "<group>"; };
-		7117F4391931DE0B0045C650 /* PhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoModel.h; sourceTree = "<group>"; };
-		7117F43A1931DE0B0045C650 /* PhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoModel.m; sourceTree = "<group>"; };
-		7117F43B1931DE0B0045C650 /* PhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoView.h; sourceTree = "<group>"; };
-		7117F43C1931DE0B0045C650 /* PhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoView.m; sourceTree = "<group>"; };
 		7119C5641920FBC700A66427 /* Simbo1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simbo1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7119C5671920FBC700A66427 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7119C5691920FBC700A66427 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -637,10 +631,6 @@
 			children = (
 				7117F4371931DE0B0045C650 /* PhotoBowserViewController.h */,
 				7117F4381931DE0B0045C650 /* PhotoBowserViewController.m */,
-				7117F4391931DE0B0045C650 /* PhotoModel.h */,
-				7117F43A1931DE0B0045C650 /* PhotoModel.m */,
-				7117F43B1931DE0B0045C650 /* PhotoView.h */,
-				7117F43C1931DE0B0045C650 /* PhotoView.m */,
 			);
 			path = PhotoBower;
 			sourceTree = "<group>";
@@ -1579,7 +1569,6 @@
 				7119C6931920FE0200A66427 /* NaviController.m in Sources */,
 				7170BB6219221257000117A9 /* MKNetworkOperation.m in Sources */,
 				7170BB5E19221257000117A9 /* NSString+MKNetworkKitAdditions.m in Sources */,
-				7117F43F1931DE0B0045C650 /* PhotoView.m in Sources */,
 				7170BBB019224520000117A9 /* UIImageView+WebCache.m in Sources */,
 				7170BB3A1921D92B000117A9 /* AFPropertyListRequestOperation.m in Sources */,
 				7117F43D1931DE0B0045C650 /* PhotoBowserViewController.m in Sources */,
@@ -1588,7 +1577,6 @@
 				7170BBAC19224520000117A9 /* UIButton+WebCache.m in Sources */,
 				71EB5AD31930FFCE009668A7 /* Comment.m in Sources */,
 				7170BB391921D92B000117A9 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				7117F43E1931DE0B0045C650 /* PhotoModel.m in Sources */,
 				7119C75E1921158200A66427 /* MBProgressHUD.m in Sources */,
 				71EB5AD61931089E009668A7 /* BaseTextCell.m in Sources */,
 				7119C5741920FBC700A66427 /* main.m in Sources */,
