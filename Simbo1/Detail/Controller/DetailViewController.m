@@ -28,7 +28,7 @@
     HeadButtonDock *_headButtonDock;
     HeadImage *_detailHeader;
     
-    PhotoBowserViewController *_photoVC;
+    PhotoBowserViewController *_photoVC;//图片浏览
 }
 @end
 
@@ -50,7 +50,7 @@
     _commentFrames = [NSMutableArray array];
     
     
-    //创建section的head
+    //创建section的head（评论，转发，赞）
     HeadButtonDock *headButtonDock = [[HeadButtonDock alloc] init];
     headButtonDock.delegate = self;
     _headButtonDock = headButtonDock;
@@ -59,7 +59,7 @@
     [self HeadButtonDock:nil btnClick:kHeadButtonTypeComment];
     
 
-    //注册通知
+    //打开图片视图通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPhoto:) name:@"openPhotoNotification" object:nil];
     
 }
@@ -92,10 +92,7 @@
             cell = [[BaseTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             
         }
-        
-        
         cell.cellFrame = _repostFrames[indexPath.row];
-        
         return cell;
         
     }else
@@ -106,10 +103,7 @@
             cell = [[BaseTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             
         }
-        
-        
         cell.cellFrame = _commentFrames[indexPath.row];
-        
         return cell;
     }
 
@@ -180,10 +174,7 @@
 #pragma mark 设置headView
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 1) {
-        return kButtonH;
-    }
-    return 0;
+    return section == 1? kButtonH: 0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -194,7 +185,6 @@
     
     _headButtonDock.status =_status;
     return _headButtonDock;
-
 }
 
 #pragma mark HeadButton的代理方法
@@ -216,7 +206,6 @@
                  [newFrames addObject:f];
                 
                 
-//                NSLog(@"---%@---",s.text);
             }
             _status.repostsCount = totalNumber;
             
@@ -248,9 +237,7 @@
             _status.commentsCount = totalNumber;
             
             // 2.添加数据
-//            [_commentFrames addObjectsFromArray:newFrames];
             [_commentFrames insertObjects:newFrames atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, newFrames.count)]];
-//            NSLog(@"----%@",_commentFrames);
             
             // 3.刷新表格
             [self.tableView reloadData];
@@ -265,6 +252,11 @@
 #pragma mark - 显示照片浏览器
 - (void) openPhoto:(NSNotification *)notification
 {
+    if (self.navigationController.topViewController != self) return;
+    
+    //取出字典
+    NSDictionary *dic = [notification object];
+    NSInteger currentIndex = [dic[@"currentIndex"] intValue];
     
     if (_photoVC == nil) {
         _photoVC = [[PhotoBowserViewController alloc] init];
@@ -272,10 +264,10 @@
     
     Status *data =_status;
     _photoVC.status = data;
+    _photoVC.currentIndex = currentIndex;
     
     [_photoVC show];
 }
-
 
 
 

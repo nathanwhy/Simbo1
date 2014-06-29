@@ -27,6 +27,7 @@
         for (int i = 0; i < kCount; i++) {
             ImageItemView *image = [[ImageItemView alloc] init];
             image.userInteractionEnabled = YES;
+            image.tag = 110 + i;
             [image addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openImage:)]];
             
             [self addSubview:image];
@@ -42,20 +43,14 @@
 - (void)openImage:(UITapGestureRecognizer *)recognizer
 {
     
-//    if ([self.listViewDelegate respondsToSelector:@selector(ImageListViewShow:imageItem:recognizer:)]) {
+    ImageItemView *itemView = (ImageItemView *)recognizer.view;
+    NSInteger index = itemView.tag - 110;
     
-    
-//    ImageItemView *itemView = (ImageItemView *)recognizer.view;
 //    NSString *currentImageUrl = [itemView url];
 //    NSArray *imageUrls = self.imageUrls;
 
-    NSDictionary *dic = @{@"recognizer": recognizer};
+    NSDictionary *dic = @{@"recognizer": recognizer, @"currentIndex": @(index)};
     [[NSNotificationCenter defaultCenter] postNotificationName:@"openPhotoNotification" object:dic];
-
-//        [self.listViewDelegate ImageListViewShow:self imageItem:itemView recognizer:recognizer];
-//    }
-    NSLog(@"打开视图");
-
 }
 
 
@@ -119,10 +114,6 @@
     CGFloat height = rows * kMultiH + (rows - 1) * kMargin;
     return CGSizeMake(width, height);
 }
-
-
-
-
 
 
 @end

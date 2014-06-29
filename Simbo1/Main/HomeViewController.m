@@ -174,13 +174,16 @@
 #pragma mark - 显示照片浏览器
 - (void) openPhoto:(NSNotification *)notification
 {
+    if (self.navigationController.topViewController != self) return;
+    
     //取出字典
     NSDictionary *dic = [notification object];
     UITapGestureRecognizer *tap = dic[@"recognizer"];
+    NSInteger currentIndex = [dic[@"currentIndex"] intValue];
     
-    UITableView *tableView = (UITableView *)self.view;
     
     //获得配图所在的indexPath
+    UITableView *tableView = (UITableView *)self.view;
     CGPoint point = [tap locationInView:tableView];
     NSIndexPath *indexPath = [tableView indexPathForRowAtPoint:point];
     
@@ -191,6 +194,7 @@
     
     Status *data =(Status *) _photoData[indexPath.row];
     _photoVC.status = data;
+    _photoVC.currentIndex = currentIndex;
     
     [_photoVC show];
 }

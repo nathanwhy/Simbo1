@@ -9,11 +9,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PhotoModel.h"
-#import "PhotoView.h"
 #import "Status.h"
 
-@interface PhotoBowserViewController : UIViewController <PhotoViewDelegate>
+@interface PhotoBowserViewController : UIViewController
 
 // 照片模型数组
 @property (strong, nonatomic) NSArray *photoList;

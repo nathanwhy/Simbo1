@@ -13,53 +13,35 @@
 
 @interface PhotoBowserViewController () <UIScrollViewDelegate>
 {
-    // 上级窗体状态栏隐藏状态
-    BOOL                    _parentStatusBarHidden;
     // 滚动视图
     UIScrollView            *_scroll;
     
-    // 缓存数据
-    // 1) 可重用视图集合
-    NSMutableSet            *_reusablePhotoViewSet;
-    // 2) 屏幕上可见的视图字典
-    NSMutableDictionary     *_visiblePhotoViewDict;
+    UIProgressView *_progressView;//进度条视图
+    UIImageView *_imageView;
+    UIScrollView *_scrollItem;
+    
+    UITapGestureRecognizer *_tap;
+    UITapGestureRecognizer *_doubleTap;
 }
 
 @end
 
 @implementation PhotoBowserViewController
 
-//- (void)loadView
-//{
-//    // 1. 全屏显示
-//    _parentStatusBarHidden = [UIApplication sharedApplication].statusBarHidden;
-//    // 2 隐藏状态栏，实现全屏显示显示
-//    [[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
-//    
-    // 3. 实例化UIScrollView
-//    UIScrollView *scroll = [[UIScrollView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-//    
-//    [scroll setBackgroundColor:[UIColor blackColor]];
-//    // 4. 隐藏滚动条
-//    [scroll setShowsHorizontalScrollIndicator:NO];
-//    [scroll setShowsVerticalScrollIndicator:NO];
-//    [scroll setPagingEnabled:YES];
-//    // 5) 设置代理
-//    [scroll setDelegate:self];
-//    
-//    _scroll = scroll;
-    
-//    // 将滚动视图作为根视图
-//    self.view = scroll;
-//}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.6];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(back)];
-    [self.view addGestureRecognizer:tap];
+    //单击返回
+    _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(back)];
+    [self.view addGestureRecognizer:_tap];
+    
+    //双击缩放图片
+    _doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+    _doubleTap.numberOfTapsRequired = 2;
+    [_tap requireGestureRecognizerToFail:_doubleTap];//双击优先
 }
 
 - (void)back
@@ -70,15 +52,14 @@
     
 }
 
-#pragma mark - 成员方法
+#pragma mark - 显示控制器
 - (void)show
 {
     // 借助UIApplication中的window
     UIApplication *app = [UIApplication sharedApplication];
     UIWindow *window = app.keyWindow;
-    // 将根视图添加到window中
+    
     [window addSubview:self.view];
-    // 记录住视图控制器
     [window.rootViewController addChildViewController:self];
     
     // 显示照片视图
@@ -90,6 +71,7 @@
 {
     NSString *imageUrl = nil;
     
+    //如果没有图片链接，返回
     if (self.status.original_pic) {
         imageUrl = self.status.original_pic;
         
@@ -97,48 +79,68 @@
         imageUrl = self.status.retweetedStatus.original_pic;
         
     }else return;
+    MyLog(@"打开了第%i张图片",self.currentIndex);
+    MyLog(@"暂时没有多个大图的接口，只能显示第一张");
     
     //进度条
+    _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+    [_progressView setCenter:self.view.center];
+    [self.view addSubview:_progressView];
     
-    NSLog(@"%@",imageUrl);
-    
+    //图片下载
     [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:imageUrl] options: SDWebImageDownloaderProgressiveDownload progress:^(NSUInteger receivedSize, long long expectedSize) {
         
         //显示下载进度
-        CGFloat progress = receivedSize / expectedSize;
-        UIProgressView *progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-        progressView.center = self.view.center;
-        [progressView setProgress:progress animated:YES];
-        NSLog(@"%lu,%lld",(unsigned long)receivedSize, expectedSize);
-        NSLog(@"%0.2f",progress);
-        [self.view addSubview:progressView];
+        CGFloat received = receivedSize;
+        CGFloat expected = expectedSize;
+        CGFloat progress = received / expected;//下载进度的百分比
+        
+        [_progressView setProgress:progress animated:YES];
+        
     } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
         
         
-        if (image && finished) {
+        if (image && finished) {//图片下载成功
             
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-            imageView.image = image;
-            imageView.contentMode = UIViewContentModeScaleAspectFit;
-            imageView.userInteractionEnabled = YES;
+            [_progressView removeFromSuperview];
+            _progressView = nil;
             
-            UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-            scroll.contentSize = CGSizeMake(600, 600);
-            scroll.minimumZoomScale = 0.5;
-            scroll.minimumZoomScale = 2;
-            scroll.delegate = self;
-            [scroll addSubview:imageView];
+            _imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+            _imageView.image = image;
+            _imageView.contentMode = UIViewContentModeScaleAspectFit;
+            _imageView.userInteractionEnabled = YES;
             
-            [self.view addSubview:scroll];
+            _scrollItem = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+            _scrollItem.maximumZoomScale = 3;
+            _scrollItem.delegate = self;
+            
+            //添加双击手势
+            [_scrollItem addGestureRecognizer:_doubleTap];
+            
+            [_scrollItem addSubview:_imageView];
+            [self.view addSubview:_scrollItem];
             
         }
-        
     }];
-    
-    
-    
-    
-    
+}
+
+#pragma mark - 伸缩图片
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return _imageView;
+}
+
+
+#pragma mark - 双击手势
+- (void)doubleTap:(UITapGestureRecognizer *)recognizer
+{
+    if (_scrollItem.zoomScale == _scrollItem.maximumZoomScale) {//缩小图片
+        [_scrollItem setZoomScale:1 animated:YES];
+        
+    }else{//放大图片
+        CGPoint point = [recognizer locationInView:self.view];
+        [_scrollItem zoomToRect:CGRectMake(point.x, point.y, 1, 1) animated:YES];
+    }
 }
 
 
