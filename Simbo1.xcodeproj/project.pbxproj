@@ -24,7 +24,6 @@
 		7119C6961920FF0400A66427 /* OanthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7119C6951920FF0400A66427 /* OanthViewController.m */; };
 		7119C7381921125B00A66427 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7119C7371921125B00A66427 /* SystemConfiguration.framework */; };
 		7119C73A1921126300A66427 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7119C7391921126300A66427 /* MobileCoreServices.framework */; };
-		7119C75E1921158200A66427 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7119C75D1921158200A66427 /* MBProgressHUD.m */; };
 		7119C77E192120C200A66427 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 7119C77D192120C200A66427 /* Account.m */; };
 		7119C781192120DD00A66427 /* AccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7119C780192120DD00A66427 /* AccountTool.m */; };
 		71290322192B6262000F2495 /* ImageListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71290321192B6262000F2495 /* ImageListView.m */; };
@@ -247,7 +246,7 @@
 		71830022193049E100633EFC /* DetailFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 71830021193049E100633EFC /* DetailFrame.m */; };
 		7183002619307A4900633EFC /* StatusDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7183002519307A4900633EFC /* StatusDetailCell.m */; };
 		719F64C4195E968B0074D5D0 /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 719F64C3195E968B0074D5D0 /* MyAnnotation.m */; };
-		719F64C6195ED3DB0074D5D0 /* Location_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 719F64C5195ED3DB0074D5D0 /* Location_blue@2x.png */; };
+		71ACABF11960702100A311F8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 71ACABF01960702100A311F8 /* MBProgressHUD.m */; };
 		71C9FF49195AE83C00699506 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C9FF48195AE83C00699506 /* MapViewController.m */; };
 		71C9FF4B195B096000699506 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C9FF4A195B096000699506 /* MapKit.framework */; };
 		71C9FF4D195B096E00699506 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C9FF4C195B096E00699506 /* CoreLocation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -297,8 +296,6 @@
 		7119C6991921052D00A66427 /* OauthID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OauthID.h; sourceTree = "<group>"; };
 		7119C7371921125B00A66427 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7119C7391921126300A66427 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		7119C75C1921158200A66427 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../../MBProgressHUD.h; sourceTree = "<group>"; };
-		7119C75D1921158200A66427 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../../MBProgressHUD.m; sourceTree = "<group>"; };
 		7119C77C192120C200A66427 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		7119C77D192120C200A66427 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		7119C77F192120DD00A66427 /* AccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountTool.h; sourceTree = "<group>"; };
@@ -574,7 +571,8 @@
 		7183002519307A4900633EFC /* StatusDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusDetailCell.m; sourceTree = "<group>"; };
 		719F64C2195E968B0074D5D0 /* MyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnnotation.h; sourceTree = "<group>"; };
 		719F64C3195E968B0074D5D0 /* MyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnnotation.m; sourceTree = "<group>"; };
-		719F64C5195ED3DB0074D5D0 /* Location_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Location_blue@2x.png"; path = "../../../../../../../JiFuBao/ShangMeng/Detail/Location_blue@2x.png"; sourceTree = "<group>"; };
+		71ACABEF1960702100A311F8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		71ACABF01960702100A311F8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		71C9FF47195AE83C00699506 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		71C9FF48195AE83C00699506 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		71C9FF4A195B096000699506 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -774,8 +772,8 @@
 		7170BB201921D891000117A9 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				7119C75C1921158200A66427 /* MBProgressHUD.h */,
-				7119C75D1921158200A66427 /* MBProgressHUD.m */,
+				71ACABEF1960702100A311F8 /* MBProgressHUD.h */,
+				71ACABF01960702100A311F8 /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
 			sourceTree = "<group>";
@@ -1057,7 +1055,6 @@
 		7170BC0C192607E1000117A9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				719F64C5195ED3DB0074D5D0 /* Location_blue@2x.png */,
 				7170BC0D192607E1000117A9 /* navigationbar_compose.png */,
 				7170BC0E192607E1000117A9 /* navigationbar_compose@2x.png */,
 				7170BC0F192607E1000117A9 /* navigationbar_compose_highlighted.png */,
@@ -1504,7 +1501,6 @@
 				7170BCCE192607E1000117A9 /* timeline_card_rightbottom.png in Resources */,
 				7170BCED192607E1000117A9 /* navigationbar_back_right.png in Resources */,
 				7170BC81192607E1000117A9 /* avatar_vgirl@2x.png in Resources */,
-				719F64C6195ED3DB0074D5D0 /* Location_blue@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1536,6 +1532,7 @@
 				7170BB381921D92B000117A9 /* AFJSONRequestOperation.m in Sources */,
 				7170BB361921D92B000117A9 /* AFHTTPRequestOperation.m in Sources */,
 				71C9FF49195AE83C00699506 /* MapViewController.m in Sources */,
+				71ACABF11960702100A311F8 /* MBProgressHUD.m in Sources */,
 				7170BB6019221257000117A9 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				7170BBBC1924EB13000117A9 /* StatusCell.m in Sources */,
 				7170BB5A19221257000117A9 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
@@ -1577,7 +1574,6 @@
 				7170BBAC19224520000117A9 /* UIButton+WebCache.m in Sources */,
 				71EB5AD31930FFCE009668A7 /* Comment.m in Sources */,
 				7170BB391921D92B000117A9 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				7119C75E1921158200A66427 /* MBProgressHUD.m in Sources */,
 				71EB5AD61931089E009668A7 /* BaseTextCell.m in Sources */,
 				7119C5741920FBC700A66427 /* main.m in Sources */,
 				71EB5AD919310B17009668A7 /* BaseTextCellFrame.m in Sources */,

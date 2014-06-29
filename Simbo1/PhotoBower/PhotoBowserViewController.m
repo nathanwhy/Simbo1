@@ -79,7 +79,8 @@
         imageUrl = self.status.retweetedStatus.original_pic;
         
     }else return;
-    MyLog(@"打开了第%i张图片",self.currentIndex);
+    NSInteger index = self.currentIndex;
+    MyLog(@"打开了第%li张图片",index);
     MyLog(@"暂时没有多个大图的接口，只能显示第一张");
     
     //进度条
