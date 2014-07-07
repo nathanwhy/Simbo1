@@ -19,7 +19,7 @@
 + (void)statusesWithSinceID:(long long)sinceID maxId:(long long)maxID Success:(StatusSuccessBlock)success failure:(StatusFailureBlock)failure
 {
     [HttpTool getWithpath:@"2/statuses/home_timeline.json" params:@{
-                                                                    @"count" : @30,
+                                                                    @"count" : @5,
                                                                     @"since_id" :@(sinceID),
                                                                     @"max_id":@(maxID)
                                                                     

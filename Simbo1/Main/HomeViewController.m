@@ -18,24 +18,27 @@
 #import "PhotoBowserViewController.h"
 #import "ImageListView.h"
 
-@interface HomeViewController ()<ImageListViewDelegate>
+@interface HomeViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *leftView;
 @end
 
 @implementation HomeViewController
 {
-    NSMutableArray *_photoData;
+    NSMutableArray *_statusData;
     NSMutableArray *_statusFrames;
-    UIRefreshControl *_refresh;
+
+    UIActivityIndicatorView *_footActivityView;
     
     PhotoBowserViewController *_photoVC;
 }
 
 - (void) viewDidLoad
 {
+    _statusFrames = [NSMutableArray array];
+    _statusData = [NSMutableArray array];
+    
     [super viewDidLoad];
     [self buildUI];//创建UI
-    [self loadStatusData];//加载数据
     
     //创建下拉刷新控件
     UIRefreshControl *rc = [[UIRefreshControl alloc] init];
@@ -45,7 +48,7 @@
     
     //注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPhoto:) name:@"openPhotoNotification" object:nil];
-//    [self refreshNewData:self.refreshControl];
+    [self refreshNewData:self.refreshControl];
 }
 
 #pragma mark  nav按钮响应事件
@@ -53,12 +56,19 @@
 {
     NSLog(@"发微博");
 }
+
+#pragma mark 导航栏右侧按钮
 - (void)popMenu
 {
     MapViewController *map = [[MapViewController alloc] init];
     [self presentViewController:map animated:YES completion:nil];
-    
 }
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 #pragma mark 创建UI
 - (void) buildUI
@@ -77,8 +87,17 @@
 
 - (void)refreshNewData:(UIRefreshControl *)refreshControl
 {
-    long long first = [[_statusFrames[0] status] ID];
+    StatusCellFrame *f = _statusFrames.count?_statusFrames[0]:nil;
+    long long first = [f.status ID];
+    
     [StatusTool statusesWithSinceID:first maxId:0 Success:^(NSArray *statues) {
+        
+        if (first) {
+            [_statusData insertObjects:statues atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, statues.count)]];
+        }else{
+            _statusData = [NSMutableArray arrayWithArray:statues];
+        }
+        
         // 1.在拿到最新微博数据的同时计算它的frame
         
         NSMutableArray *newobject = [NSMutableArray array];
@@ -103,29 +122,37 @@
 }
 
 #pragma mark 读取数据
-
-- (void) loadStatusData
+- (void) loadOldStatus
 {
-    _statusFrames = [NSMutableArray array];
-    _photoData = [NSMutableArray array];
+    // 1.最后1条微博的ID
+    StatusCellFrame *f = [_statusFrames lastObject];
+    long long last = [f.status ID];
     
-    // 获取微博数据
-    [StatusTool statusesWithSinceID:0 maxId:0 Success:^(NSArray *statues) {
+    // 2.获取微博数据
+    [StatusTool statusesWithSinceID:0 maxId:last - 1 Success:^(NSArray *statues) {
+        
+        [_statusData addObjectsFromArray:statues];
         // 1.在拿到最新微博数据的同时计算它的frame
-        _photoData = [NSMutableArray arrayWithArray:statues];//图片数据
+        NSMutableArray *newFrames = [NSMutableArray array];
         for (Status *s in statues) {
             StatusCellFrame *f = [[StatusCellFrame alloc] init];
             f.status = s;
-            [_statusFrames addObject:f];
-            
+            [newFrames addObject:f];
         }
         
+        // 2.将newFrames整体插入到旧数据的后面
+        [_statusFrames addObjectsFromArray:newFrames];
+        
+        // 3.刷新表格
         [self.tableView reloadData];
+        
+        // 4.让刷新控件停止刷新状态
+        [_footActivityView stopAnimating];
     } failure:^(NSError *error) {
-        NSLog(@"失败-%@",error);
+        [_footActivityView stopAnimating];
     }];
-
 }
+
 
 #pragma mark - tableView 的代理方法
 
@@ -144,7 +171,6 @@
     }
     
     cell.StatusCellFrame = _statusFrames[indexPath.row];
-    cell.listView.listViewDelegate = self;
 
     
     return cell;
@@ -157,6 +183,16 @@
     return [_statusFrames[indexPath.row] cellHeight];
 }
 
+#pragma mark - 上拉刷新
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    _footActivityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    _footActivityView.color = kDarkBule;
+    _footActivityView.frame = CGRectMake(10, 0, 300, 40);
+    return _footActivityView;
+}
+
+
 
 #pragma mark 界面跳转
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -166,10 +202,8 @@
     detail.status = f.status;
     
     [self.navigationController pushViewController:detail animated:YES];
-    
-    
-    
 }
+
 
 #pragma mark - 显示照片浏览器
 - (void) openPhoto:(NSNotification *)notification
@@ -192,13 +226,24 @@
         _photoVC = [[PhotoBowserViewController alloc] init];
     }
     
-    Status *data =(Status *) _photoData[indexPath.row];
+    Status *data =(Status *) _statusData[indexPath.row];
     _photoVC.status = data;
     _photoVC.currentIndex = currentIndex;
     
     [_photoVC show];
 }
 
+
+
+#pragma mark - 到底部自动刷新
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    BOOL isRefresh = self.tableView.contentOffset.y + self.tableView.frame.size.height > self.tableView.contentSize.height;
+    if (isRefresh) {
+        [_footActivityView startAnimating];
+        [self loadOldStatus];
+    }
+}
 
 
 @end
