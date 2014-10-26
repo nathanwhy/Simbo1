@@ -257,6 +257,7 @@
 		71EB5AD31930FFCE009668A7 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EB5AD21930FFCE009668A7 /* Comment.m */; };
 		71EB5AD61931089E009668A7 /* BaseTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EB5AD51931089E009668A7 /* BaseTextCell.m */; };
 		71EB5AD919310B17009668A7 /* BaseTextCellFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EB5AD819310B17009668A7 /* BaseTextCellFrame.m */; };
+		D8A4955E19FD364A00670BA7 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A4955D19FD364A00670BA7 /* PostViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -590,6 +591,8 @@
 		71EB5AD51931089E009668A7 /* BaseTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTextCell.m; sourceTree = "<group>"; };
 		71EB5AD719310B17009668A7 /* BaseTextCellFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTextCellFrame.h; sourceTree = "<group>"; };
 		71EB5AD819310B17009668A7 /* BaseTextCellFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTextCellFrame.m; sourceTree = "<group>"; };
+		D8A4955C19FD364A00670BA7 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
+		D8A4955D19FD364A00670BA7 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -674,6 +677,7 @@
 		7119C56D1920FBC700A66427 /* Simbo1 */ = {
 			isa = PBXGroup;
 			children = (
+				D8A4955B19FD360A00670BA7 /* SendMessage */,
 				71C9FF46195AE83C00699506 /* NearbyMap */,
 				7117F4361931DE0B0045C650 /* PhotoBower */,
 				71EB5ACD1930FE55009668A7 /* Base */,
@@ -1255,6 +1259,15 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		D8A4955B19FD360A00670BA7 /* SendMessage */ = {
+			isa = PBXGroup;
+			children = (
+				D8A4955C19FD364A00670BA7 /* PostViewController.h */,
+				D8A4955D19FD364A00670BA7 /* PostViewController.m */,
+			);
+			path = SendMessage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1299,7 +1312,7 @@
 		7119C55C1920FBC700A66427 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Nathan Wu";
 				TargetAttributes = {
 					7119C57E1920FBC700A66427 = {
@@ -1539,6 +1552,7 @@
 				7170BB3C1921D92B000117A9 /* AFXMLRequestOperation.m in Sources */,
 				7170BBAD19224520000117A9 /* UIImage+GIF.m in Sources */,
 				7170BBB819226756000117A9 /* StatusCellFrame.m in Sources */,
+				D8A4955E19FD364A00670BA7 /* PostViewController.m in Sources */,
 				7170BB6319221257000117A9 /* Reachability.m in Sources */,
 				7170BBA819224520000117A9 /* SDWebImageDownloader.m in Sources */,
 				7170BBA619224520000117A9 /* SDWebImageCompat.m in Sources */,
@@ -1627,7 +1641,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1666,7 +1679,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1724,7 +1736,6 @@
 		7119C5941920FBC700A66427 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Simbo1.app/Simbo1";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1747,7 +1758,6 @@
 		7119C5951920FBC700A66427 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Simbo1.app/Simbo1";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

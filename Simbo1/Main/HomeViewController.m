@@ -17,6 +17,7 @@
 #import "MapViewController.h"
 #import "PhotoBowserViewController.h"
 #import "ImageListView.h"
+#import "PostViewController.h"
 
 @interface HomeViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *leftView;
@@ -55,6 +56,8 @@
 - (void) sendStatus
 {
     NSLog(@"发微博");
+    PostViewController *post = [[PostViewController alloc] init];
+    [self.navigationController presentViewController:post animated:YES completion:nil];
 }
 
 #pragma mark 导航栏右侧按钮

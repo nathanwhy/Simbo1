@@ -37,6 +37,9 @@
     
     // <a href="http://app.weibo.com/t/feed/2qiXeb" rel="nofollow">皮皮时光机</a>
 
+    if (!source || [source isKindOfClass:[NSNull class]] || source.length == 0) {
+        return;
+    }
     NSUInteger begin = [source rangeOfString:@">"].location + 1;
     NSUInteger end = [source rangeOfString:@"</"].location;
     

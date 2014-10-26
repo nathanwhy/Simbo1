@@ -11,6 +11,10 @@
 #define MyLog(...)
 #endif
 
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define kNavigator_H 64
+
 // 3.设置cell的边框宽度
 #define kCellBorderWidth 10
 // 设置tableView的边框宽度
