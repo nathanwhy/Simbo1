@@ -29,7 +29,9 @@
     UINavigationBar *bar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kNavigator_H)];
     UINavigationItem *naviItem = [[UINavigationItem alloc] initWithTitle:nil];
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStylePlain target:self action:@selector(sendMessage)];
     naviItem.leftBarButtonItem = leftButton;
+    naviItem.rightBarButtonItem = rightButton;
     [bar pushNavigationItem:naviItem animated:YES];
     [self.view addSubview:bar];
     
