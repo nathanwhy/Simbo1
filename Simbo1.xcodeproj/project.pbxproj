@@ -257,6 +257,7 @@
 		71EB5AD31930FFCE009668A7 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EB5AD21930FFCE009668A7 /* Comment.m */; };
 		71EB5AD61931089E009668A7 /* BaseTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EB5AD51931089E009668A7 /* BaseTextCell.m */; };
 		71EB5AD919310B17009668A7 /* BaseTextCellFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EB5AD819310B17009668A7 /* BaseTextCellFrame.m */; };
+		D81FF35319FE9E42009F2125 /* SendMessageBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D81FF35219FE9E42009F2125 /* SendMessageBar.m */; };
 		D8A4955E19FD364A00670BA7 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A4955D19FD364A00670BA7 /* PostViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -591,6 +592,8 @@
 		71EB5AD51931089E009668A7 /* BaseTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTextCell.m; sourceTree = "<group>"; };
 		71EB5AD719310B17009668A7 /* BaseTextCellFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTextCellFrame.h; sourceTree = "<group>"; };
 		71EB5AD819310B17009668A7 /* BaseTextCellFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTextCellFrame.m; sourceTree = "<group>"; };
+		D81FF35119FE9E42009F2125 /* SendMessageBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMessageBar.h; sourceTree = "<group>"; };
+		D81FF35219FE9E42009F2125 /* SendMessageBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMessageBar.m; sourceTree = "<group>"; };
 		D8A4955C19FD364A00670BA7 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
 		D8A4955D19FD364A00670BA7 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1264,6 +1267,8 @@
 			children = (
 				D8A4955C19FD364A00670BA7 /* PostViewController.h */,
 				D8A4955D19FD364A00670BA7 /* PostViewController.m */,
+				D81FF35119FE9E42009F2125 /* SendMessageBar.h */,
+				D81FF35219FE9E42009F2125 /* SendMessageBar.m */,
 			);
 			path = SendMessage;
 			sourceTree = "<group>";
@@ -1558,6 +1563,7 @@
 				7170BBA619224520000117A9 /* SDWebImageCompat.m in Sources */,
 				7170BB841922369C000117A9 /* User.m in Sources */,
 				71EB5AD01930FE8E009668A7 /* BaseText.m in Sources */,
+				D81FF35319FE9E42009F2125 /* SendMessageBar.m in Sources */,
 				71EB5ACC1930CAF5009668A7 /* HeadButtonDock.m in Sources */,
 				7170BB5B19221257000117A9 /* NSData+MKBase64.m in Sources */,
 				719F64C4195E968B0074D5D0 /* MyAnnotation.m in Sources */,
