@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B08A1EC1A021DA800E25287 /* EmoteSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B08A1EB1A021DA800E25287 /* EmoteSelectorView.m */; };
 		7117F43D1931DE0B0045C650 /* PhotoBowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7117F4381931DE0B0045C650 /* PhotoBowserViewController.m */; };
 		7119C5681920FBC700A66427 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7119C5671920FBC700A66427 /* Foundation.framework */; };
 		7119C56A1920FBC700A66427 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7119C5691920FBC700A66427 /* CoreGraphics.framework */; };
@@ -272,6 +273,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B08A1EA1A021DA800E25287 /* EmoteSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmoteSelectorView.h; sourceTree = "<group>"; };
+		6B08A1EB1A021DA800E25287 /* EmoteSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmoteSelectorView.m; sourceTree = "<group>"; };
 		7117F4371931DE0B0045C650 /* PhotoBowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBowserViewController.h; sourceTree = "<group>"; };
 		7117F4381931DE0B0045C650 /* PhotoBowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBowserViewController.m; sourceTree = "<group>"; };
 		7119C5641920FBC700A66427 /* Simbo1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simbo1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1269,6 +1272,8 @@
 				D8A4955D19FD364A00670BA7 /* PostViewController.m */,
 				D81FF35119FE9E42009F2125 /* SendMessageBar.h */,
 				D81FF35219FE9E42009F2125 /* SendMessageBar.m */,
+				6B08A1EA1A021DA800E25287 /* EmoteSelectorView.h */,
+				6B08A1EB1A021DA800E25287 /* EmoteSelectorView.m */,
 			);
 			path = SendMessage;
 			sourceTree = "<group>";
@@ -1579,6 +1584,7 @@
 				7170BB351921D92B000117A9 /* AFHTTPClient.m in Sources */,
 				712CBFE2192E2A7C00444360 /* LeftTableViewController.m in Sources */,
 				7170BBA919224520000117A9 /* SDWebImageDownloaderOperation.m in Sources */,
+				6B08A1EC1A021DA800E25287 /* EmoteSelectorView.m in Sources */,
 				7183002619307A4900633EFC /* StatusDetailCell.m in Sources */,
 				7170BB821922369C000117A9 /* Status.m in Sources */,
 				7119C6961920FF0400A66427 /* OanthViewController.m in Sources */,
