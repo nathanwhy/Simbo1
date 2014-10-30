@@ -44,7 +44,7 @@
     _textView.backgroundColor = kColor(230, 230, 230);
     [self.view addSubview:_textView];
     
-    // 工具栏
+    // test
     _sendMessageBar = [[SendMessageBar alloc] init];
     _sendMessageBar.frame = CGRectMake(0, 200, kScreenWidth, 50);
     [self.view addSubview:_sendMessageBar];

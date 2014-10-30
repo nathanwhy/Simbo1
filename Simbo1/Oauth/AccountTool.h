@@ -10,7 +10,7 @@
 #import "Account.h"
 
 #define kAppKey @"35328248"
-#define kAppSecret @"4b8d31de2251de16d1c07d3c38a08"
+#define kAppSecret @"4b8d31de2251de16d1c07d3c38a0"
 #define kRedirect_uri @"https://api.weibo.com/oauth2/default.html"//回调地址
 #define kBaseURL @"https://api.weibo.com"
 #define kAuthorizeURL [kBaseURL stringByAppendingPathComponent:@"oauth2/authorize"]
