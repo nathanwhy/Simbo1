@@ -10,7 +10,7 @@
 #import "SendMessageBar.h"
 #import "EmoteSelectorView.h"
 
-@interface PostViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,EmoteSelectorViewDelegate>
+@interface PostViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,EmoteSelectorViewDelegate,UITextViewDelegate>
 {
     UITextView *_textView;
     SendMessageBar *_sendMessageBar;
@@ -44,6 +44,7 @@
     _textView = [[UITextView alloc] init];
     _textView.frame = (CGRect){0, kNavigator_H, kScreenWidth, 150};
     _textView.backgroundColor = kColor(230, 230, 230);
+    _textView.delegate = self;
     [self.view addSubview:_textView];
     
     // test
@@ -51,16 +52,18 @@
 //    _sendMessageBar.frame = CGRectMake(0, 200, kScreenWidth, 50);
 //    [self.view addSubview:_sendMessageBar];
     
-    CGFloat itemW = self.view.frame.size.height/3;
+    CGFloat itemW = self.view.frame.size.width/3;
     CGFloat itemH = 40;
+    CGFloat itemY = CGRectGetMaxY(_textView.frame);
     NSArray *btnTitle = @[@"表情",@"照片",@"相机"];
     
     for (int i = 0; i<3; i++) {
         UIButton *emojiBtn = [[UIButton alloc] init];
         emojiBtn.tag = 1024+i;
+        [emojiBtn setTitleColor:kMainColor forState:UIControlStateNormal];
         [emojiBtn setTitle:btnTitle[i] forState:UIControlStateNormal];
-        [emojiBtn setTitle:@"表情选择" forState:UIControlStateSelected];
-        [emojiBtn setFrame:CGRectMake(0, itemW*i, itemW, itemH)];
+        [emojiBtn setTitle:@"选择" forState:UIControlStateSelected];
+        [emojiBtn setFrame:CGRectMake(itemW*i, itemY, itemW, itemH)];
         [emojiBtn addTarget:self action:@selector(emojiClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:emojiBtn];
     }
@@ -80,13 +83,16 @@
     
     sendar.selected = !sendar.selected;
     
+    [_textView becomeFirstResponder];
     if (sendar.selected) {
         [_textView setInputView:_emoteView];
     }else {
         [_textView setInputView:nil];
     }
+    [UIView animateWithDuration:0.3 animations:^{
+        [_textView reloadInputViews];
+    }];
     
-    [_textView reloadInputViews];
 }
 
 #pragma mark - 表情选择视图代理方法
@@ -160,6 +166,11 @@
 
 }
 
+#pragma mark - textView
+- (void)textViewDidChange:(UITextView *)textView
+{
+    NSLog(@"textview = %@",textView.text);
+}
 
 
 #pragma mark - button Click

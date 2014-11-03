@@ -37,6 +37,7 @@
 
 // 全局的背景色
 #define kGlobalBg kColor(230, 230, 230)
+#define kMainColor kColor(63,104,161)
 
 // 6.cell内部子控件的颜色设置
 // 会员昵称颜色
@@ -45,6 +46,7 @@
 #define kScreenNameColor kColor(63, 104, 161)
 // 被转发微博昵称颜色
 #define kRetweetedScreenNameColor kColor(63, 104, 161)
+
 
 #define kNaviBarTintColor kColor(63, 104, 161)
 #define kDarkBule kColor(63, 104, 161)
