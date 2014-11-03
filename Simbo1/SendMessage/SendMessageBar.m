@@ -19,10 +19,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        _textview = [[UITextView alloc] init];
-        _textview.delegate = self;
-        _textview.returnKeyType = UIReturnKeyDone;
-        [self addSubview:_textview];
         _sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_sendButton setTitle:@"Send" forState:UIControlStateNormal];
         [_sendButton addTarget:self action:@selector(send) forControlEvents:UIControlEventTouchUpInside];
@@ -33,10 +29,6 @@
     return self;
 }
 
-- (void)send
-{
-    [_textview resignFirstResponder];
-}
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {

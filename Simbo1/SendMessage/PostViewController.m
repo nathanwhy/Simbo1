@@ -8,11 +8,13 @@
 
 #import "PostViewController.h"
 #import "SendMessageBar.h"
+#import "EmoteSelectorView.h"
 
-@interface PostViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface PostViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,EmoteSelectorViewDelegate>
 {
     UITextView *_textView;
     SendMessageBar *_sendMessageBar;
+    EmoteSelectorView *_emoteView;
 }
 @end
 
@@ -45,13 +47,64 @@
     [self.view addSubview:_textView];
     
     // test
-    _sendMessageBar = [[SendMessageBar alloc] init];
-    _sendMessageBar.frame = CGRectMake(0, 200, kScreenWidth, 50);
-    [self.view addSubview:_sendMessageBar];
+//    _sendMessageBar = [[SendMessageBar alloc] init];
+//    _sendMessageBar.frame = CGRectMake(0, 200, kScreenWidth, 50);
+//    [self.view addSubview:_sendMessageBar];
+    
+    CGFloat itemW = self.view.frame.size.height/3;
+    CGFloat itemH = 40;
+    NSArray *btnTitle = @[@"表情",@"照片",@"相机"];
+    
+    for (int i = 0; i<3; i++) {
+        UIButton *emojiBtn = [[UIButton alloc] init];
+        emojiBtn.tag = 1024+i;
+        [emojiBtn setTitle:btnTitle[i] forState:UIControlStateNormal];
+        [emojiBtn setTitle:@"表情选择" forState:UIControlStateSelected];
+        [emojiBtn setFrame:CGRectMake(0, itemW*i, itemW, itemH)];
+        [emojiBtn addTarget:self action:@selector(emojiClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:emojiBtn];
+    }
+    
+    
+    // 实例化表情选择视图
+    _emoteView = [[EmoteSelectorView alloc] initWithFrame:CGRectMake(0, 0, 320, 216)];
+    // 设置代理
+    _emoteView.delegate = self;
+    
     
     
     [_textView becomeFirstResponder];
 }
+
+- (void)emojiClick:(UIButton *)sendar{
+    
+    sendar.selected = !sendar.selected;
+    
+    if (sendar.selected) {
+        [_textView setInputView:_emoteView];
+    }else {
+        [_textView setInputView:nil];
+    }
+    
+    [_textView reloadInputViews];
+}
+
+#pragma mark - 表情选择视图代理方法
+// 拼接表情字符串
+- (void)emoteSelectorViewSelectEmoteString:(NSString *)emote
+{
+    NSMutableString *strM = [NSMutableString stringWithString:_textView.text];
+    [strM appendString:emote];
+    _textView.text = strM;
+}
+
+// 删除字符串
+- (void)emoteSelectorViewRemoveChar
+{
+    NSString *str = _textView.text;// 删除最末尾的字符，并设置文本
+    _textView.text =  [str substringToIndex:(str.length - 1)];
+}
+
 
 #pragma mark keyboard delegate
 - (void)keyboardChangeFrame:(NSNotification *)notification

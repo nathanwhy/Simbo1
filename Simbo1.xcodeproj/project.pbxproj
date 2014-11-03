@@ -275,6 +275,7 @@
 /* Begin PBXFileReference section */
 		6B08A1EA1A021DA800E25287 /* EmoteSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmoteSelectorView.h; sourceTree = "<group>"; };
 		6B08A1EB1A021DA800E25287 /* EmoteSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmoteSelectorView.m; sourceTree = "<group>"; };
+		6BBBBC731A07580300F63619 /* MyEmoji.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyEmoji.h; sourceTree = "<group>"; };
 		7117F4371931DE0B0045C650 /* PhotoBowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBowserViewController.h; sourceTree = "<group>"; };
 		7117F4381931DE0B0045C650 /* PhotoBowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBowserViewController.m; sourceTree = "<group>"; };
 		7119C5641920FBC700A66427 /* Simbo1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simbo1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1274,6 +1275,7 @@
 				D81FF35219FE9E42009F2125 /* SendMessageBar.m */,
 				6B08A1EA1A021DA800E25287 /* EmoteSelectorView.h */,
 				6B08A1EB1A021DA800E25287 /* EmoteSelectorView.m */,
+				6BBBBC731A07580300F63619 /* MyEmoji.h */,
 			);
 			path = SendMessage;
 			sourceTree = "<group>";
