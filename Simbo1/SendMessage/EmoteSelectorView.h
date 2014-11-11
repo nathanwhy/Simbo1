@@ -16,7 +16,7 @@
 
 @end
 
-@interface EmoteSelectorView : UIView
+@interface EmoteSelectorView : UIView<UIScrollViewDelegate>
 
 @property (weak, nonatomic) id <EmoteSelectorViewDelegate> delegate;
 

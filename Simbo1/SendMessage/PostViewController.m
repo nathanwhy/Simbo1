@@ -9,6 +9,7 @@
 #import "PostViewController.h"
 #import "SendMessageBar.h"
 #import "EmoteSelectorView.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface PostViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,EmoteSelectorViewDelegate,UITextViewDelegate>
 {
@@ -64,7 +65,7 @@
         [emojiBtn setTitle:btnTitle[i] forState:UIControlStateNormal];
         [emojiBtn setTitle:@"选择" forState:UIControlStateSelected];
         [emojiBtn setFrame:CGRectMake(itemW*i, itemY, itemW, itemH)];
-        [emojiBtn addTarget:self action:@selector(emojiClick:) forControlEvents:UIControlEventTouchUpInside];
+        [emojiBtn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:emojiBtn];
     }
     
@@ -80,18 +81,33 @@
 }
 
 - (void)emojiClick:(UIButton *)sendar{
-    
     sendar.selected = !sendar.selected;
     
-    [_textView becomeFirstResponder];
     if (sendar.selected) {
         [_textView setInputView:_emoteView];
-    }else {
-        [_textView setInputView:nil];
+        
     }
-    [UIView animateWithDuration:0.3 animations:^{
-        [_textView reloadInputViews];
-    }];
+    [_textView reloadInputViews];
+}
+
+
+- (void)buttonClick:(UIButton *)sender
+{
+    switch (sender.tag-1024) {
+        case 0:
+            [self emojiClick:sender];
+            break;
+        case 1:
+            [self clickAddPhoto];
+            break;
+        case 2:
+            
+            break;
+        default:
+            
+            break;
+    }
+    
     
 }
 
@@ -158,11 +174,13 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
 //    // 1. 获取选择的图像
-//    UIImage *image = info[UIImagePickerControllerEditedImage];
-//
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        
-//    }];
+    UIImage *image = info[UIImagePickerControllerEditedImage];
+
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    NSLog(@"info = %@",info);
+    
 
 }
 

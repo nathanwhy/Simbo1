@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6B08A1EC1A021DA800E25287 /* EmoteSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B08A1EB1A021DA800E25287 /* EmoteSelectorView.m */; };
+		6BA381241A088F9000DDBCB4 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA381231A088F9000DDBCB4 /* AssetsLibrary.framework */; };
 		7117F43D1931DE0B0045C650 /* PhotoBowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7117F4381931DE0B0045C650 /* PhotoBowserViewController.m */; };
 		7119C5681920FBC700A66427 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7119C5671920FBC700A66427 /* Foundation.framework */; };
 		7119C56A1920FBC700A66427 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7119C5691920FBC700A66427 /* CoreGraphics.framework */; };
@@ -275,6 +276,7 @@
 /* Begin PBXFileReference section */
 		6B08A1EA1A021DA800E25287 /* EmoteSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmoteSelectorView.h; sourceTree = "<group>"; };
 		6B08A1EB1A021DA800E25287 /* EmoteSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmoteSelectorView.m; sourceTree = "<group>"; };
+		6BA381231A088F9000DDBCB4 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		7117F4371931DE0B0045C650 /* PhotoBowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBowserViewController.h; sourceTree = "<group>"; };
 		7117F4381931DE0B0045C650 /* PhotoBowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBowserViewController.m; sourceTree = "<group>"; };
 		7119C5641920FBC700A66427 /* Simbo1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simbo1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -606,6 +608,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BA381241A088F9000DDBCB4 /* AssetsLibrary.framework in Frameworks */,
 				71C9FF4D195B096E00699506 /* CoreLocation.framework in Frameworks */,
 				71C9FF4B195B096000699506 /* MapKit.framework in Frameworks */,
 				7170BD2D19270333000117A9 /* AVFoundation.framework in Frameworks */,
@@ -664,6 +667,7 @@
 		7119C5661920FBC700A66427 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6BA381231A088F9000DDBCB4 /* AssetsLibrary.framework */,
 				71C9FF4C195B096E00699506 /* CoreLocation.framework */,
 				71C9FF4A195B096000699506 /* MapKit.framework */,
 				7170BD2C19270333000117A9 /* AVFoundation.framework */,
